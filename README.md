@@ -26,8 +26,9 @@ This project uses a Raspberry Pi Pico WH microcontroller connected to a DHT11 te
 4. Sensor data is posted to Adafruit IO feeds via HTTP requests using the Pico’s Wi-Fi connection.
 5. This cycle repeats indefinitely, updating the cloud dashboard regularly.
 
---
 ## The circuit pinout
+
+![Circuit Layout of Raspberry Pi Pico Weather Station](circuit.png)
 
 I've assembled my circuit on a breadboard, connecting the Raspberry Pi Pico WH, the DHT11 sensor, and the three LEDs with their respective resistors. Essentially, the lights are unnecessary for a project like this, but I did want to add some sort of visual indicator that the sensor is reading and sending data to Adafruit.
 - DHT11 Sensor:
