@@ -4,6 +4,8 @@ _This report was written by Isaac Benitez Santos(ib222wd)_
 
 This project uses a Raspberry Pi Pico WH microcontroller connected to a DHT11 temperature and humidity sensor and a set of LEDs to create a simple weather station that sends data wirelessly to Adafruit IO, a cloud platform for IoT data visualization and logging.
 
+_Estimated project completion time: 4h_
+
 ## Project Overview
 
 - The **DHT11 sensor** measures temperature and humidity.
@@ -14,11 +16,15 @@ This project uses a Raspberry Pi Pico WH microcontroller connected to a DHT11 te
 
 ## Hardware Components
 
-- Raspberry Pi Pico WH (with built-in Wi-Fi)  
-- DHT11 temperature and humidity sensor  
-- 3 LEDs with appropriate resistors for visual feedback  
-- Breadboard and jumper wires for connections  
-- USB cable for power and programming  
+This project utilizes the following hardware components:
+
+* **Raspberry Pi Pico WH:** A compact microcontroller serving as the central processing unit. Its integrated Wi-Fi module enables wireless network connectivity for data transmission.
+* **DHT11 Temperature and Humidity Sensor:** An environmental sensor responsible for acquiring digital readings of ambient temperature and relative humidity.
+* **3 LEDs (with Resistors):** Light-emitting diodes used in conjunction with current-limiting resistors to provide visual status indications during operation.
+* **Breadboard and Jumper Wires:** Prototyping tools used for solderless interconnection of electronic components and establishing electrical pathways within the circuit.
+* **USB Cable:** Provides power to the Raspberry Pi Pico WH and facilitates firmware programming and serial communication.
+
+I bought these components through the starter kit offered for the IoT course which costs 349SEK: [Electrokit](https://www.electrokit.com/lnu-starter)
 
 ## How It Works
 
@@ -27,6 +33,57 @@ This project uses a Raspberry Pi Pico WH microcontroller connected to a DHT11 te
 3. LEDs run a simple loading animation while sensor readings and data transmission occur.
 4. Sensor data is posted to Adafruit IO feeds via HTTP requests using the Pico’s Wi-Fi connection.
 5. This cycle repeats indefinitely, updating the cloud dashboard regularly.
+
+## Computer Setup
+
+Setting up my computer environment is important for programming the Raspberry Pi Pico WH. I utilized **Thonny IDE** as i found it easier to code with for the pico and it feels more user-friendly with the interface and integrated MicroPython support.
+
+---
+
+### Chosen IDE
+
+I selected **Thonny** as my integrated development environment (IDE). Thonny is a Python IDE specifically designed to be accessible for beginners, and it includes built-in functionalities for direct interaction with MicroPython devices, making it an ideal choice for the Raspberry Pi Pico. You can download Thonny from their official website: [Thonny IDE](https://thonny.org/).
+
+---
+
+### Code Upload Workflow
+
+The process of deploying code (flashing) to the Raspberry Pi Pico WH involves two main stages:
+
+1.  **Flashing MicroPython Firmware:** The Raspberry Pi Pico must first be equipped with the MicroPython firmware. This procedure involves:
+    * **Downloading** the appropriate `.uf2` firmware file for the Raspberry Pi Pico WH from the official MicroPython downloads page.
+    * **Connecting** the Pico to the computer while simultaneously pressing and holding the `BOOTSEL` button. This action causes the Pico to appear as a removable mass storage device (similar to a USB flash drive).
+    * **Dragging and dropping** the downloaded `.uf2` firmware file directly onto the mounted Pico drive. The Pico will automatically reboot once the firmware transfer is complete, now operating with MicroPython.
+
+2.  **Uploading Application Code:** After the MicroPython firmware is installed, my project's Python scripts (e.g., `main.py`, `leds.py`, `wifi_connect.py`, `adafruit_io.py`, `secrets.py`) are uploaded directly using Thonny:
+    * Within Thonny, I configure the interpreter to recognize the Raspberry Pi Pico, typically by selecting the appropriate serial port.
+    * I can then use Thonny's built-in functionalities to **save my Python files directly to the Pico's file system**. The primary script, `main.py`, is configured to execute automatically upon the Pico's boot-up.
+
+---
+
+## Required Computer Setup Steps
+
+The computer setup was significantly simplified by using Thonny:
+
+* **Thonny Installation:** The primary requirement was the installation of **Thonny IDE**. Thonny is designed as a cross-platform application and typically bundles all necessary components, such as integrated Python interpreters and serial port drivers, for seamless communication with MicroPython boards. This design **eliminates the need for separate installations of additional software like Node.js, specific device drivers, or complex command-line toolchains.**
+
+### The circuit pinout
+
+![Circuit Layout of Raspberry Pi Pico Weather Station](circuit.png)
+
+I've assembled my circuit on a breadboard, connecting the Raspberry Pi Pico WH, the DHT11 sensor, and the three LEDs with their respective resistors. Essentially, the lights are unnecessary for a project like this, but I did want to add some sort of visual indicator that the sensor is reading and sending data to Adafruit.
+- DHT11 Sensor:
+  - VCC (grey wire): I connected this to a 3.3V power pin on the Raspberry Pi Pico WH.
+  - Data (white wire): This is connected to GPIO pin GP28 on the Pico for reading sensor data.
+  - GND (black wire): I connected this to a Ground (GND) pin on the Pico.
+
+- LEDs (Green, Yellow, Red):
+  - Each LED's anode (longer leg) is connected to a specific GPIO pin on the Pico via a resistor. I've connected the Red LED to GP2, the Yellow LED to GP3, and the Green LED to GP4. The resistors are crucial to limit current and protect the LEDs.
+  - Each LED's cathode (shorter leg) is connected to the common ground rail on the breadboard.
+
+- Raspberry Pi Pico WH:
+  - I'm powering it via its USB connection.
+  - The GND pin (black wire) is connected to the common ground rail on the breadboard.
 
 ## Understanding My Data Flow: From Sensor to Cloud
 
@@ -176,27 +233,10 @@ Humidity variated a little bit, since a bit after I started the reading I opened
 
 This entire cycle repeats continuously, every 10 seconds, forming a seamless and automated data pipeline from the physical world to my digital dashboard. It's a clear demonstration of a practical IoT solution!
 
-## The circuit pinout
+## View of the project
 
-![Circuit Layout of Raspberry Pi Pico Weather Station](circuit.png)
-
-I've assembled my circuit on a breadboard, connecting the Raspberry Pi Pico WH, the DHT11 sensor, and the three LEDs with their respective resistors. Essentially, the lights are unnecessary for a project like this, but I did want to add some sort of visual indicator that the sensor is reading and sending data to Adafruit.
-- DHT11 Sensor:
-  - VCC (grey wire): I connected this to a 3.3V power pin on the Raspberry Pi Pico WH.
-  - Data (white wire): This is connected to GPIO pin GP28 on the Pico for reading sensor data.
-  - GND (black wire): I connected this to a Ground (GND) pin on the Pico.
-
-- LEDs (Green, Yellow, Red):
-  - Each LED's anode (longer leg) is connected to a specific GPIO pin on the Pico via a resistor. I've connected the Red LED to GP2, the Yellow LED to GP3, and the Green LED to GP4. The resistors are crucial to limit current and protect the LEDs.
-  - Each LED's cathode (shorter leg) is connected to the common ground rail on the breadboard.
-
-- Raspberry Pi Pico WH:
-  - I'm powering it via its USB connection.
-  - The GND pin (black wire) is connected to the common ground rail on the breadboard.
- 
 Finally I would like to include a picture of how the circuit looks in real life!
 ![Circuit photo](photo.jpg)
-
 
 ## Use Cases
 
