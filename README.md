@@ -1,3 +1,5 @@
+_This report was written by Isaac Benitez Santos(ib222wd)_
+
 # Raspberry Pi Pico WH IoT Weather Station
 
 This project uses a Raspberry Pi Pico WH microcontroller connected to a DHT11 temperature and humidity sensor and a set of LEDs to create a simple weather station that sends data wirelessly to Adafruit IO, a cloud platform for IoT data visualization and logging.
@@ -28,7 +30,7 @@ This project uses a Raspberry Pi Pico WH microcontroller connected to a DHT11 te
 
 ## Understanding My Data Flow: From Sensor to Cloud
 
-My IoT weather station's core function is to continuously monitor environmental conditions and transmit that data online. This process highlights the essence of **Internet of Things (IoT)**, where physical objects (my sensor and Pico) connect and communicate over the internet.
+My IoT weather station's core function is to continuously monitor environmental conditions and transmit that data online to show the essence of **Internet of Things (IoT)**, where physical objects (the sensor and Pico) connect and communicate over the internet.
 
 ---
 
@@ -75,7 +77,7 @@ while True:
 
 ### 2. Pico Processing and Preparation
 
-Once the Pico receives the raw digital signals from the DHT11, my MicroPython script processes these into usable temperature (in Celsius) and humidity (as a percentage) values. I often display these values in the serial console for real-time verification. During this crucial data acquisition phase, my custom **LED loading animation** provides visual feedback, indicating that the device is actively working.
+Once the Pico receives the raw digital signals from the DHT11, the script processes these into usable temperature (in Celsius) and humidity (as a percentage) values. I chose display these values in the console (debugging) for real-time verification. During this data acquisition phase, I added a custom **LED loading animation** that provides visual feedback, indicating that the device is actively working.
 ```python
 from machine import Pin
 import time
@@ -100,7 +102,7 @@ def all_off():
 
 ### 3. Establishing Wi-Fi Connectivity
 
-This step is fundamental to the "Internet" aspect of IoT. My Raspberry Pi Pico WH utilizes its **built-in Wi-Fi module** to connect to my local network. The `wifi_connect.connect_wifi()` function manages this process, securely using credentials (like SSID and password) stored separately from the main script. A robust Wi-Fi connection is absolutely essential for enabling any remote data transmission. I have in my own machine a class called "secrets.py", but this class is not submitted in this repository as it has my private credentials for my Adafruit account and my WiFi credentials. However, this is how the WiFi connection is created:
+This step is to fulfill the "Internet" aspect of IoT. My Raspberry Pi Pico WH utilizes its **built-in Wi-Fi module** to connect to my local network. The `wifi_connect.connect_wifi()` function manages this process, securely using credentials (like SSID and password) stored separately from the main script. A rgood Wi-Fi connection is essential for enabling any remote data transmission. I have in my own machine a class called "secrets.py", but this class is not submitted in this repository as it has my private credentials for my Adafruit account and my WiFi credentials. However, this is how the WiFi connection is created:
 
 ```python
 import network
@@ -126,7 +128,7 @@ def connect_wifi():
 
 With a stable Wi-Fi connection, the Pico can now communicate with **Adafruit IO**, my chosen **cloud platform** for IoT data. The lines `adafruit_io.send_data("temperature", temp)` and `adafruit_io.send_data("humidity", hum)` orchestrate this transmission. These functions are essentially initiating **HTTP POST requests** to Adafruit IO's servers. Each request contains:
 
-* My unique **Adafruit IO username and API key** for authentication.
+* My **Adafruit IO username and API key** for authentication.
 * The specific **feed name** (e.g., "temperature" or "humidity") to direct the data to the correct storage location.
 * The actual **sensor reading** (e.g., `23.0` for temperature or `50.5` for humidity).
 
@@ -157,8 +159,8 @@ def send_data(feed_name, value):
 
 Upon receiving the data, Adafruit IO performs two key functions:
 
-* **Data Logging:** Every single data point sent from my Pico is timestamped and permanently stored. This builds a valuable **historical record** of environmental conditions.
-* **Visualization:** Adafruit IO automatically generates **dynamic, real-time graphs** for each feed. These visualizations allow me to remotely monitor trends, analyze patterns, and observe immediate changes in temperature and humidity from any web browser or mobile device, truly embodying the remote monitoring capability of IoT.
+* **Data Logging:** Every single data point sent from the Pico is timestamped and permanently stored. This builds a valuable **historical record** of environmental conditions.
+* **Visualization:** Adafruit IO automatically generates **dynamic, real-time graphs** for each feed. These visualizations allow me to remotely monitor trends, analyze patterns, and observe immediate changes in temperature and humidity from any web browser or mobile device, showing the remote monitoring capability of IoT.
   
 ## Temperature
 
