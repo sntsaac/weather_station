@@ -61,7 +61,7 @@ The process of deploying code (flashing) to the Raspberry Pi Pico WH involves tw
 
 ---
 
-## Required Computer Setup Steps
+### Required Computer Setup Steps
 
 The computer setup was significantly simplified by using Thonny:
 
