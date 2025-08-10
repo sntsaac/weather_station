@@ -28,19 +28,20 @@ This project uses a Raspberry Pi Pico WH microcontroller connected to a DHT11 te
 
 --
 ## The circuit pinout
+
 I've assembled my circuit on a breadboard, connecting the Raspberry Pi Pico WH, the DHT11 sensor, and the three LEDs with their respective resistors. Essentially, the lights are unnecessary for a project like this, but I did want to add some sort of visual indicator that the sensor is reading and sending data to Adafruit.
 - DHT11 Sensor:
--- VCC (grey wire): I connected this to a 3.3V power pin on the Raspberry Pi Pico WH.
--- Data (white wire): This is connected to GPIO pin GP28 on the Pico for reading sensor data.
--- GND (black wire): I connected this to a Ground (GND) pin on the Pico.
+  - VCC (grey wire): I connected this to a 3.3V power pin on the Raspberry Pi Pico WH.
+  - Data (white wire): This is connected to GPIO pin GP28 on the Pico for reading sensor data.
+  - GND (black wire): I connected this to a Ground (GND) pin on the Pico.
 
 - LEDs (Green, Yellow, Red):
--- Each LED's anode (longer leg) is connected to a specific GPIO pin on the Pico via a resistor. I've connected the Red LED to GP2, the Yellow LED to GP3, and the Green LED to GP4. The resistors are crucial to limit current and protect the LEDs.
--- Each LED's cathode (shorter leg) is connected to the common ground rail on the breadboard.
+  - Each LED's anode (longer leg) is connected to a specific GPIO pin on the Pico via a resistor. I've connected the Red LED to GP2, the Yellow LED to GP3, and the Green LED to GP4. The resistors are crucial to limit current and protect the LEDs.
+  - Each LED's cathode (shorter leg) is connected to the common ground rail on the breadboard.
 
 - Raspberry Pi Pico WH:
--- I'm powering it via its USB connection.
--- The GND pin (black wire) is connected to the common ground rail on the breadboard.
+  - I'm powering it via its USB connection.
+  - The GND pin (black wire) is connected to the common ground rail on the breadboard.
 
 ## Use Cases
 
