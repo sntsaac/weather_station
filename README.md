@@ -159,14 +159,18 @@ Upon receiving the data, Adafruit IO performs two key functions:
 
 * **Data Logging:** Every single data point sent from my Pico is timestamped and permanently stored. This builds a valuable **historical record** of environmental conditions.
 * **Visualization:** Adafruit IO automatically generates **dynamic, real-time graphs** for each feed. These visualizations allow me to remotely monitor trends, analyze patterns, and observe immediate changes in temperature and humidity from any web browser or mobile device, truly embodying the remote monitoring capability of IoT.
+  
+## Temperature
 
 The data was received in my feeds, the temperature feed showed as following:
 ![Temperature received](temperature.png)
 The temperature was constant 23 degrees Cecius, as I did not do a long reading of the temperature in my room. I assume if I were to do a reading of 12 hours there would not be much variety in the temperature, maybe about 2 or 3 degrees difference.
+
+## Humidity
+
 The humidity received was:
 ![Humidity feed](humidity.png)
 Humidity variated a little bit, since a bit after I started the reading I opened one of my apartment windows, perhaps explaining the drop.
-
 
 This entire cycle repeats continuously, every 10 seconds, forming a seamless and automated data pipeline from the physical world to my digital dashboard. It's a clear demonstration of a practical IoT solution!
 
@@ -187,6 +191,10 @@ I've assembled my circuit on a breadboard, connecting the Raspberry Pi Pico WH, 
 - Raspberry Pi Pico WH:
   - I'm powering it via its USB connection.
   - The GND pin (black wire) is connected to the common ground rail on the breadboard.
+ 
+Finally I would like to include a picture of how the circuit looks in real life!
+![Circuit photo](photo.jpg)
+
 
 ## Use Cases
 
