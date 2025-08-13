@@ -2,7 +2,7 @@ _This report was written by Isaac Benitez Santos(ib222wd)_
 
 # Raspberry Pi Pico WH IoT Weather Station
 
-This project uses a Raspberry Pi Pico WH microcontroller connected to a DHT11 temperature and humidity sensor and a set of LEDs to create a simple weather station that sends data wirelessly to Adafruit IO, a cloud platform for IoT data visualization and logging.
+ For this project I used a Raspberry Pi Pico WH microcontroller connected to a DHT11 temperature and humidity sensor and a set of LEDs to create a simple weather station that sends data wirelessly to Adafruit IO, a cloud platform for IoT data visualization and logging. The reason for me to choose this as my project was the means of convenience, but otherwise I found interesting to have the idea thaat this microcontroller (which a variant was used for another course) is able to read and send data to the cloud as an IoT object!
 
 _Estimated project completion time: 4h_
 
@@ -13,6 +13,36 @@ _Estimated project completion time: 4h_
 - The device uses **LED animations** to indicate status (e.g., loading or activity).
 - The code is organized into separate modules for better maintainability, including Wi-Fi connection, sensor reading, LED control, and Adafruit IO communication.
 - Sensor data is sent regularly (every 10 seconds) to specific feeds on Adafruit IO, allowing remote monitoring of the environmental conditions.
+
+## Project Choice and Purpose
+
+I chose this project to **learn about IoT (Internet of Things)** in a hands-on way. It's a great simple project to see how devices connect to the internet.
+
+---
+
+### Why I Picked This Project
+
+I wanted a clear way to see how **IoT works**. The Raspberry Pi Pico WH has **built-in Wi-Fi**, which made it easy to send data without extra parts. It was perfect for learning about sensors, coding, and sending information online.
+
+---
+
+### What It Does
+
+This device is a **mini weather station**. Its main job is to **watch the temperature and humidity** in a room.
+
+* **Remote Monitoring:** Since it sends data to Adafruit IO, I can **check the weather conditions** from anywhere on my phone or computer.
+* **IoT Example:** It shows how a physical sensor collects data, how a small computer (the Pico) sends it, and how a website (Adafruit IO) shows it. It's a clear **IoT demonstration**.
+* **Future Ideas:** It's also a starting point for bigger projects. I can add more sensors or make it do more things later.
+
+---
+
+### What I'll Learn From the Data
+
+By seeing the temperature and humidity change over time on Adafruit IO, I expect to learn a few things:
+
+* **How stable my environment is:** I'll see if the temperature and humidity stay steady or jump around a lot. This can show if a room is well-insulated or has drafts.
+* **Daily patterns:** I can spot when the room gets warmest or coldest, or when humidity changes, like after a shower or cooking.
+* **What affects it:** I'll see how opening a window or turning on the heat changes the readings. This helps me understand my space better.
 
 ## Hardware Components
 
@@ -45,6 +75,10 @@ Setting up my computer environment is important for programming the Raspberry Pi
 I selected **Thonny** as my integrated development environment (IDE). Thonny is a Python IDE specifically designed to be accessible for beginners, and it includes built-in functionalities for direct interaction with MicroPython devices, making it an ideal choice for the Raspberry Pi Pico. You can download Thonny from their official website: [Thonny IDE](https://thonny.org/).
 
 ---
+
+## Platform Choice
+
+I chose **Adafruit IO** as my IoT cloud platform for this project. Its primary functionality is to provide a user-friendly way to visualize and log data sent from IoT devices like my Raspberry Pi Pico WH. Adafruit IO is a **cloud-based platform**, meaning my data is stored and managed online, allowing me to monitor my weather station remotely from any internet-connected device. For this project, I am using its **free subscription tier**, which offers enough capacity for my current needs. If I wanted to scale my idea in the future, Adafruit IO provides options for increased data limits and features, or I could explore other cloud IoT platforms like Google Cloud IoT Core or AWS IoT, which offer more extensive services for larger-scale deployments.
 
 ### Code Upload Workflow
 
@@ -218,6 +252,8 @@ Upon receiving the data, Adafruit IO performs two key functions:
 
 * **Data Logging:** Every single data point sent from the Pico is timestamped and permanently stored. This builds a valuable **historical record** of environmental conditions.
 * **Visualization:** Adafruit IO automatically generates **dynamic, real-time graphs** for each feed. These visualizations allow me to remotely monitor trends, analyze patterns, and observe immediate changes in temperature and humidity from any web browser or mobile device, showing the remote monitoring capability of IoT.
+
+# Presenting the data
   
 ## Temperature
 
@@ -234,6 +270,8 @@ Humidity variated a little bit, since a bit after I started the reading I opened
 This entire cycle repeats continuously, every 10 seconds, forming a seamless and automated data pipeline from the physical world to my digital dashboard. It's a clear demonstration of a practical IoT solution!
 
 ## View of the project
+
+This project did not mean a lot of difficulty, I already had experience programming with microcontrollers from a previous course, so at least the circuit wiring was an easy part to write. Using Thonny was a big advantage and time saver, plus Adafruit makes it so easy to visualise the data without any complications.
 
 Finally I would like to include a picture of how the circuit looks in real life!
 ![Circuit photo](photo.jpg)
