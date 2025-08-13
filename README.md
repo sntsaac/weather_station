@@ -258,13 +258,13 @@ Upon receiving the data, Adafruit IO performs two key functions:
 ## Temperature
 
 The data was received in my feeds, the temperature feed showed as following:
-![Temperature received](temperature.png)
+![Temperature received](Temperature_2.0.png)
 The temperature was constant 23 degrees Cecius, as I did not do a long reading of the temperature in my room. I assume if I were to do a reading of 12 hours there would not be much variety in the temperature, maybe about 2 or 3 degrees difference.
 
 ## Humidity
 
 The humidity received was:
-![Humidity feed](humidity.png)
+![Humidity feed](Humidity_2.0.png)
 Humidity variated a little bit, since a bit after I started the reading I opened one of my apartment windows, perhaps explaining the drop.
 
 This entire cycle repeats continuously, every 10 seconds, forming a seamless and automated data pipeline from the physical world to my digital dashboard. It's a clear demonstration of a practical IoT solution!
